@@ -1,0 +1,33 @@
+
+/* HOME PAGE */
+.footer-icone {
+    width: 30px;
+}
+
+.current-shows {
+    background-color: #600a27;
+    color: #f9ccd9;
+}
+
+.history {
+    background-color: #022962;
+    color: #85b4fc;
+}
+
+.history-text {
+    background-color: #04368f;
+}
+
+.creative-process {
+    background-color: #02554f;
+    color: #91fbd6;
+}
+
+.process-text {
+    background-color: #047368;
+}
+
+.home-card {
+    background-color: #851033;
+    width: 18rem;
+}
