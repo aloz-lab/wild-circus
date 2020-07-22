@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Show{% endblock %}
+
+{% block body %}
+    <h1>Show</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ show.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ show.title }}</td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td>{{ show.picture }}</td>
+            </tr>
+            <tr>
+                <th>Summary</th>
+                <td>{{ show.summary }}</td>
+            </tr>
+            <tr>
+                <th>Show_date</th>
+                <td>{{ show.showDate ? show.showDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Adult_price</th>
+                <td>{{ show.adultPrice }}</td>
+            </tr>
+            <tr>
+                <th>Child_price</th>
+                <td>{{ show.childPrice }}</td>
+            </tr>
+            <tr>
+                <th>Group_price</th>
+                <td>{{ show.groupPrice }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('show_index') }}">back to list</a>
+
+    <a href="{{ path('show_edit', {'id': show.id}) }}">edit</a>
+
+    {{ include('show/_delete_form.html.twig') }}
+{% endblock %}

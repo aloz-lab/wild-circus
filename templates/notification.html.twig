@@ -1,0 +1,16 @@
+{% block title %}{% endblock %}
+
+{% block body %}
+    <p>
+        <strong>Email</strong> : {{ contact.email }}
+    </p>
+    <p>
+        <strong>Objet</strong> : {{ contact.object }}
+    </p>
+    <p>
+        Vous avez reçu un mail de <strong>{{ contact.firstname }} {{ contact.lastname }}</strong> :
+    </p>
+    <p>
+        {{ contact.message }}
+    </p>
+{% endblock %}
