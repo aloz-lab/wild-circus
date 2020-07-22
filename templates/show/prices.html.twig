@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Show index{% endblock %}
+
+{% block body %}
+    <div class="container prices-container bg-dark text-white">
+        <h4 class="py-3">Regular tickets</h4>
+        <table class="table table-info table-striped">
+            <thead>
+                <tr class="bg-info">
+                    <th scope="col">Shows</th>
+                    <th scope="col">Adults</th>
+                    <th scope="col">Children under 12</th>
+                    <th scope="col">Groups</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for show in shows %}
+                <tr class="bg-info">
+                    <th scope="row">{{ show.title }}</th>
+                    <td>{{ show.adultPrice }} €</td>
+                    <td>{{ show.childPrice }} €</td>
+                    <td>{{ show.groupPrice }} €</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <h4 class="py-3">VIP experience</h4>
+        <p>Enjoy exclusive perks in our VIP Suite and watch the show from Premium seats. <a class="prices-link" href="{{ path('contact') }}">Contact us</a></p>
+        <h4 class="py-3">Premium Backstage Tour Package</h4>
+        <p class="pb=3">Go behind the scenes for the very best of Wild Circus. <a class="prices-link" href="{{ path('contact') }}">Contact us</a></p>
+    </div>
+{% endblock %}

@@ -3,28 +3,46 @@
 {% block body %}
     <div class="current-shows jumbotron jumbotron-fluid py-3 mb-0">
         <div class="container">
-            <h3 class="text-center display-5">Our current shows</h3>
+            <h3 class="text-center display-5">Our shows</h3>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-sm-10 col-md-6 col-lg-4">
-                    <div class="home-card card">
-                        <div class="card-body">
-                            <h4 class="card-title">Laugh</h4>
+                <div class="col-sm-12 col-md-12 col-lg-4 px-0">
+                    <div class="home-card card h-100">
+                        <div class="card-body mx-0">
+                            <h4 class="card-title text-center">Laugh</h4>
                             <p class="card-text">As an adult, come and discover our irresistible clowns, between practical jokes and pranks let yourself be carried away by their joy and fall back into childhood.</p>
                         </div>
                     </div>
-                    <div class="home-card card">
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 px-0">
+                    <div class="home-card card h-100">
                         <div class="card-body">
-                            <h4 class="card-title">Dream</h4>
+                            <h4 class="card-title text-center">Dream</h4>
                             <p class="card-text">Let yourself be carried away in a world where the real and the imaginary are one, in the company of our talented magicians, discover a wonderful world limited only by your imagination.</p>
                         </div>
                     </div>
-                    <div class="home-card card">
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 px-0">
+                    <div class="home-card card h-100">
                         <div class="card-body">
-                            <h4 class="card-title">Marvel at</h4>
+                            <h4 class="card-title text-center">Marvel at</h4>
                             <p class="card-text">Tame the untameable in the company of our tamers, between roar and razor-sharp claws, watch these fierce felines turn into sweet kittens.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                    <div class="card-body home-card">
+                        <h4 class="card-title text-center">Our current shows</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item home-card text-center">Cras justo odio</li>
+                            <li class="list-group-item home-card text-center">Dapibus ac facilisis in</li>
+                            <li class="list-group-item home-card text-center">Vestibulum at eros</li>
+                        </ul>
+                        <p class="text-center"><a href="{{ path('show_index') }}">See all shows</a></p>
                     </div>
                 </div>
             </div>

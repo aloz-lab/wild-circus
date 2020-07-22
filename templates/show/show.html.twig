@@ -3,6 +3,53 @@
 {% block title %}Show{% endblock %}
 
 {% block body %}
+    <div class="container bg-dark">
+        <div class="mt-4 col-sm-12 col-md-12">
+            <div class="card bg-dark border-warning">
+                <div class="row no-gutters">
+                    <div class="col-sm-12 col-md-5">
+                        <img class="card-img-top border border-warning" src="{{show.picture}}" alt="{{ show.title }} poster">
+                    </div>
+                    <div class="col-sm-10 col-md-7">
+                        <div class="card-body">
+                            <div class="card-body bg-dark text-white">
+                                <h2 class="card-title">{{ show.title }}</h2>
+                                <a href="{{ path('show_index') }}">Back to all shows</a>
+                                <p class="card-text mt-4"><strong>Summary :</strong></p>
+                                <p class="card-text">{{ show.summary }}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-dark text-white"><strong>Date : </strong>{{ show.showDate ? show.showDate|date('Y-m-d') : '' }}</li>
+                                <li class="list-group-item bg-dark text-white"><strong>Prices</strong></li>
+                            </ul>
+                            <p class="card-text bg-dark text-white ml-5"><strong>Adult : </strong>{{ show.adultPrice }} €</p>
+                            <p class="card-text bg-dark text-white ml-5"><strong>Child : </strong>{{ show.childPrice }} €</p>
+                            <p class="card-text bg-dark text-white ml-5"><strong>Group : </strong>{{ show.groupPrice }} €</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-body bg-dark text-white">
+                                <h4 class="mb-4">Artists :</h4>
+                                {% for artist in show.artists %}
+                                    <div>
+                                        <a href="{{ path('show_artist', { 'id': artist.id }) }}">{{ artist.name }}
+                                    </div>
+                                    <br>
+                                {% else %}
+                                    No artist found.
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('show_edit', {'id': show.id}) }}" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Edit</a>
+                    <a href="{{ path('show_delete', {'id': show.id}) }}" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
     <h1>Show</h1>
 
     <table class="table">

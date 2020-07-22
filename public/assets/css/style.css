@@ -1,5 +1,9 @@
 
 /* HOME PAGE */
+.navbar {
+    background-color: #222222;
+}
+
 .footer-icone {
     width: 30px;
 }
@@ -29,7 +33,14 @@
 
 .home-card {
     background-color: #851033;
-    width: 18rem;
+}
+
+.prices-link {
+    font-style: italic;
+}
+
+.prices-link:hover {
+    text-decoration: none;
 }
 
 .contact-card {

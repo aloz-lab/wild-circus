@@ -3,6 +3,40 @@
 {% block title %}Artist index{% endblock %}
 
 {% block body %}
+    <div class="card bg-dark">
+        <div class="card-header bg-warning border-0 rounded-0">
+            <h3 class="text-center text-dark pt-2">All artists</h3>
+        </div>
+    </div>
+    <div>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('artist_new') }}" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Create new</a>
+        {% endif %}
+    </div>
+    <div class="container bg-dark">
+        <div class="row">
+            {% for artist in artists %}
+                <div class="mt-4 col-sm-6 col-md-5 col-lg-4">
+                    <div class="card bg-warning">
+                        <img src="{{ artist.picture }}" class="card-img-top" alt="{{ artist.name }}" style="height: 300px;">
+                        <div class="card-body bg-dark text-white">
+                            <h4 class="card-title" style="height: 68px;">{{ artist.name }}</h4>
+                            <p class="card-text"><strong>Presentation :</strong></p>
+                            <p class="card-text" style="height: 150px;">{{ artist.presentation }}</p>
+                        </div>
+                        <div class="card-body bg-dark text-white">
+                            <a href="{{ path('artist_show', { 'id': artist.id }) }}" class="card-link">Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                No artist found.
+            {% endfor %}
+        </div>
+    </div>
+
+
+
     <h1>Artist index</h1>
 
     <table class="table">

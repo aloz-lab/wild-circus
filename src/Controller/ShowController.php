@@ -26,6 +26,16 @@ class ShowController extends AbstractController
     }
 
     /**
+     * @Route("/prices", name="show_prices", methods={"GET"})
+     */
+    public function showPrices(ShowRepository $showRepository): Response
+    {
+        return $this->render('show/prices.html.twig', [
+            'shows' => $showRepository->findAll(),
+        ]);
+    }
+
+    /**
      * @Route("/new", name="show_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

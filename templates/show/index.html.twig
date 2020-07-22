@@ -3,6 +3,38 @@
 {% block title %}Show index{% endblock %}
 
 {% block body %}
+    <div class="card bg-dark">
+        <div class="card-header bg-warning border-0 rounded-0">
+            <h3 class="text-center text-dark pt-2">All shows</h3>
+        </div>
+    </div>
+    <div>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('show_new') }}" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Create new</a>
+        {% endif %}
+    </div>
+    <div class="container bg-dark">
+        <div class="row">
+            {% for show in shows %}
+                <div class="mt-4 col-sm-6 col-md-5 col-lg-4">
+                    <div class="card bg-warning">
+                        <img src="{{ show.picture }}" class="card-img-top" alt="{{ show.title }}" style="height: 300px;">
+                        <div class="card-body bg-dark text-white">
+                            <h4 class="card-title" style="height: 68px;">{{ show.title }}</h4>
+                            <p class="card-text"><strong>Summary :</strong></p>
+                            <p class="card-text" style="height: 150px;">{{ show.summary }}</p>
+                        </div>
+                        <div class="card-body bg-dark text-white">
+                            <a href="{{ path('show_show', { 'id': show.id }) }}" class="card-link">Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                No show found.
+            {% endfor %}
+        </div>
+    </div>
+
     <h1>Show index</h1>
 
     <table class="table">
