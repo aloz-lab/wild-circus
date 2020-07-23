@@ -4,6 +4,8 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Show;
+use App\Repository\ShowRepository;
 use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,9 +21,11 @@ class HomeController extends AbstractController
      * @Route("/", name="home_index")
      * @return Response
      */
-    public function index() :Response
+    public function index(ShowRepository $showRepository) :Response
     {
-        return $this->render('/index.html.twig');
+        return $this->render('/index.html.twig', [
+           'shows' => $showRepository->findAll(),
+         ]);
     }
 
     /**
@@ -39,9 +43,6 @@ class HomeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $email = (new TemplatedEmail())
-                //->from('mafomation.life@gmail.com')
-                //->to($contact->getEmail())
-                //->cc('mafomation.life@gmail.com')
                 ->from($this->getParameter('mailer_from'))
                 ->to('newuser@example.com')
                 ->subject($contact->getObject())

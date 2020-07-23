@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Show;
+use App\Form\CommentType;
 use App\Form\ShowType;
 use App\Repository\ShowRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -59,12 +61,33 @@ class ShowController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="show_show", methods={"GET"})
+     * @Route("/{id}", name="show_show", methods={"GET","POST"})
      */
-    public function show(Show $show): Response
+    public function show(Show $show, Request $request): Response
     {
+        $id = $show->getId();
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setPerformance($show);
+            $user = $this->getUser();
+            //dd($user);
+            $comment->setAuthor($user);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('show_show', ['id' => $id]);
+        }
+
+        $comments = $show->getComments();
+
         return $this->render('show/show.html.twig', [
             'show' => $show,
+            'comments' => $comments,
+            'form' => $form->createView()
         ]);
     }
 
