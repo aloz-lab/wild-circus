@@ -10,7 +10,7 @@
     </div>
     <div>
         {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('show_new') }}" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Create new</a>
+            <a href="{{ path('show_new') }}" class="btn btn-warning mt-4 ml-5" role="button" aria-pressed="true">Create new</a>
         {% endif %}
     </div>
     <div class="container bg-dark">
@@ -19,7 +19,7 @@
                 <div class="mt-4 col-sm-6 col-md-5 col-lg-4">
                     <div class="card bg-warning">
                         <img src="{{ show.picture }}" class="card-img-top" alt="{{ show.title }}" style="height: 300px;">
-                        <div class="card-body bg-dark text-white">
+                        <div class="card-body bg-dark text-warning">
                             <h4 class="card-title" style="height: 68px;">{{ show.title }}</h4>
                             <p class="card-text"><strong>Summary :</strong></p>
                             <p class="card-text" style="height: 150px;">{{ show.summary }}</p>

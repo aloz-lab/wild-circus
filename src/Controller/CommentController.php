@@ -63,13 +63,15 @@ class CommentController extends AbstractController
      */
     public function edit(Request $request, Comment $comment): Response
     {
+        $show = $comment->getPerformance();
+        $id = $show->getId();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('comment_index');
+            return $this->redirectToRoute('show_show', ['id' => $id]);
         }
 
         return $this->render('comment/edit.html.twig', [

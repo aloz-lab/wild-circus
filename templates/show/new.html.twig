@@ -3,9 +3,17 @@
 {% block title %}New Show{% endblock %}
 
 {% block body %}
-    <h1>Create new Show</h1>
-
-    {{ include('show/_form.html.twig') }}
-
-    <a href="{{ path('show_index') }}">back to list</a>
+    <div class="container-fluid bg-dark">
+        <div class="mx-auto mt-5 col-sm-12 col-md-8">
+            <div class="card bg-dark">
+                <div class="contact-card card mb-5">
+                    <div class="container px-4">
+                        <h3 class="mt-3">Create new Show</h3>
+                        {{ include('show/_form.html.twig') }}
+                        <a href="{{ path('show_index') }}" class="mt-3">Back to list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

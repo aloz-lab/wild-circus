@@ -3,11 +3,18 @@
 {% block title %}Edit Show{% endblock %}
 
 {% block body %}
-    <h1>Edit Show</h1>
-
-    {{ include('show/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('show_index') }}">back to list</a>
-
-    {{ include('show/_delete_form.html.twig') }}
+<div class="container-fluid bg-dark">
+    <div class="mx-auto mt-5 col-sm-12 col-md-8">
+        <div class="card bg-dark">
+            <div class="contact-card card mb-5">
+                <div class="container px-4">
+                    <h3 class="mt-3">Edit Show</h3>
+                    {{ include('show/_form.html.twig', {'button_label': 'Update'}) }}
+                    <a href="{{ path('show_index') }}">back to list</a>
+                    {{ include('show/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

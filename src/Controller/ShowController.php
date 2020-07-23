@@ -96,13 +96,14 @@ class ShowController extends AbstractController
      */
     public function edit(Request $request, Show $show): Response
     {
+        $id = $show->getId();
         $form = $this->createForm(ShowType::class, $show);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('show_index');
+            return $this->redirectToRoute('show_show', ['id' => $id]);
         }
 
         return $this->render('show/edit.html.twig', [

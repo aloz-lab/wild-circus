@@ -1,3 +1,10 @@
+a {
+    color: white;
+}
+
+a:hover {
+    color: white;
+}
 
 /* HOME PAGE */
 .navbar {
@@ -41,14 +48,12 @@
     background-color: #851033;
 }
 
+/* PRICES PAGE */
 .prices-link {
     font-style: italic;
 }
 
-.prices-link:hover {
-    text-decoration: none;
-}
-
+/* CONTACT PAGE */
 .contact-card {
     background-color: #ffb355;
 }

@@ -3,11 +3,20 @@
 {% block title %}Edit Comment{% endblock %}
 
 {% block body %}
-    <h1>Edit Comment</h1>
-
-    {{ include('comment/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('comment_index') }}">back to list</a>
-
-    {{ include('comment/_delete_form.html.twig') }}
+<div class="container-fluid bg-dark">
+    <div class="mx-auto mt-5 col-sm-12 col-md-6">
+        <div class="card bg-dark">
+            <div class="contact-card card mb-5">
+                <div class="container px-4">
+                    <h3 class="mt-3">Edit Comment</h3>
+                    {{ include('comment/_form.html.twig', {'button_label': 'Update'}) }}
+                    {% if is_granted('ROLE_ADMIN')%}
+                        <a href="{{ path('comment_index') }}">Back to comments</a>
+                    {% endif %}
+                    {{ include('comment/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

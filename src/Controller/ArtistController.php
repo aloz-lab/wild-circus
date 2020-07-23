@@ -63,13 +63,14 @@ class ArtistController extends AbstractController
      */
     public function edit(Request $request, Artist $artist): Response
     {
+        $id = $artist->getId();
         $form = $this->createForm(ArtistType::class, $artist);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('artist_index');
+            return $this->redirectToRoute('artist_show', ['id' => $id]);
         }
 
         return $this->render('artist/edit.html.twig', [
