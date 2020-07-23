@@ -16,7 +16,7 @@
     <div class="container bg-dark">
         <div class="row">
             {% for artist in artists %}
-                <div class="mt-4 col-sm-6 col-md-5 col-lg-4">
+                <div class="my-4 col-sm-6 col-md-5 col-lg-4">
                     <div class="card bg-warning">
                         <img src="{{ artist.picture }}" class="card-img-top" alt="{{ artist.name }}" style="height: 300px;">
                         <div class="card-body bg-dark text-warning">
@@ -35,39 +35,4 @@
         </div>
     </div>
 
-
-
-    <h1>Artist index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Picture</th>
-                <th>Presentation</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for artist in artists %}
-            <tr>
-                <td>{{ artist.id }}</td>
-                <td>{{ artist.name }}</td>
-                <td>{{ artist.picture }}</td>
-                <td>{{ artist.presentation }}</td>
-                <td>
-                    <a href="{{ path('artist_show', {'id': artist.id}) }}">show</a>
-                    <a href="{{ path('artist_edit', {'id': artist.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('artist_new') }}">Create new</a>
 {% endblock %}

@@ -85,12 +85,14 @@ class CommentController extends AbstractController
      */
     public function delete(Request $request, Comment $comment): Response
     {
+        $show = $comment->getPerformance();
+        $id = $show->getId();
         if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($comment);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('comment_index');
+        return $this->redirectToRoute('show_show', ['id' => $id]);
     }
 }
