@@ -16,7 +16,7 @@
     <div class="container bg-dark">
         <div class="row">
             {% for show in shows %}
-                <div class="mt-4 col-sm-6 col-md-5 col-lg-4">
+                <div class="my-4 col-sm-6 col-md-5 col-lg-4">
                     <div class="card bg-warning">
                         <img src="{{ show.picture }}" class="card-img-top" alt="{{ show.title }}" style="height: 300px;">
                         <div class="card-body bg-dark text-warning">
@@ -35,45 +35,4 @@
         </div>
     </div>
 
-    <h1>Show index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Picture</th>
-                <th>Summary</th>
-                <th>Show_date</th>
-                <th>Adult_price</th>
-                <th>Child_price</th>
-                <th>Group_price</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for show in shows %}
-            <tr>
-                <td>{{ show.id }}</td>
-                <td>{{ show.title }}</td>
-                <td>{{ show.picture }}</td>
-                <td>{{ show.summary }}</td>
-                <td>{{ show.showDate ? show.showDate|date('Y-m-d') : '' }}</td>
-                <td>{{ show.adultPrice }}</td>
-                <td>{{ show.childPrice }}</td>
-                <td>{{ show.groupPrice }}</td>
-                <td>
-                    <a href="{{ path('show_show', {'id': show.id}) }}">show</a>
-                    <a href="{{ path('show_edit', {'id': show.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('show_new') }}">Create new</a>
 {% endblock %}
